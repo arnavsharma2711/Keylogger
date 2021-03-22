@@ -41,7 +41,7 @@ namespace Base64
             bits += 8;
             while(bits >= 0)
             {
-                ret.push_back(BASE64_CODES[((val >> bits) & b63)]);
+                ret.push_back(BASE64_CODES[(val >> bits) & b63]);
                 bits -=6;
             }
         } 
