@@ -40,7 +40,7 @@ namespace IO
     {
         std::string path = GetOurPath(true);
         Helper::DateTime dt;
-        std::string name = dt.GetDateTimeString{"Adasd"} + ".log";
+        std::string name = dt.GetDateTimeString("Adasd") + ".log";
 
         try
         {
