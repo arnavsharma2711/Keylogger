@@ -19,13 +19,13 @@ class Keys
 {
     public:
         static std::map<int, KeyPair> KEYS;
-        
+
 };
 
-std::map<int, KeyPair> Keys::KEYS = 
+std::map<int, KeyPair> Keys::KEYS =
         {
-            {0xC1, {"[VK_ABNT_C1]", "[Abnt C1]"}}, 
-            {0xC2, {"[VK_ABNT_C2]", "[Abnt C2]"}}, 
+            {0xC1, {"[VK_ABNT_C1]", "[Abnt C1]"}},
+            {0xC2, {"[VK_ABNT_C2]", "[Abnt C2]"}},
             {0x6B, {"[VK_ADD]", "[Numpad +]"}},
             {0xF6, {"[VK_ATTN]", "[Attn]"}},
             {0x08, {"[VK_BACK]", "[Backspace]"}},
@@ -96,7 +96,7 @@ std::map<int, KeyPair> Keys::KEYS =
             {0xDC, {"[VK_OEM_5]", "[OEM_5 (| \\)]"}},
             {0xDD, {"[VK_OEM_6]", "[OEM_6 (} ])]"}},
             {0xDE, {"[VK_OEM_7]", "[OEM_7 (\" ')]"}},
-            {0xDF, {"[VK_OEM_8]", "[OEM_8 (ยง !)]"}}, 
+            {0xDF, {"[VK_OEM_8]", "[OEM_8 (ง !)]"}},
             {0xF0, {"[VK_OEM_ATTN]", "[Oem Attn]"}},
             {0xF3, {"[VK_OEM_AUTO]", "[Auto]"}},
             {0xE1, {"[VK_OEM_AX]", "[Ax]"}},
@@ -216,4 +216,4 @@ std::map<int, KeyPair> Keys::KEYS =
             {0x05, {"[VK_XBUTTON1]", "[X Button 1 **]"}},
             {0x06, {"[VK_XBUTTON2]", "[X Button 2 **]"}},
         };
-#endif 
+#endif

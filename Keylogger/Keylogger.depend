@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1616482030 source:c:\users\arnav\documents\to be added in github\keylogger\main.cpp
+	<iostream>
+	<windows.h>
+	"Helper.h"
+	"KeyConstants.h"
+	"Base64.h"
+
+1616482262 c:\users\arnav\documents\to be added in github\keylogger\helper.h
+	<time.h>
+	<string>
+	<sstream>
+	<fstream>
+
+1616481998 c:\users\arnav\documents\to be added in github\keylogger\keyconstants.h
+	<map>
+	<string>
+
+1616481969 c:\users\arnav\documents\to be added in github\keylogger\base64.h
+	<vector>
+	<string>
+

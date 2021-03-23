@@ -10,8 +10,12 @@ namespace Helper
 {
     template <class T>
 
-    std::string ToString(const T &);
-
+    std::string ToString(const T &e)
+    {
+    std::ostringstream s;
+    s << e;
+    return s.str();
+}
     struct DateTime
     {
         DateTime()
@@ -27,12 +31,12 @@ namespace Helper
             M = info->tm_min;
             H = info->tm_hour;
             S = info->tm_sec;
-            
+
         }
 
         DateTime (int D, int m, int y, int H, int M, int S) : D(D), m(m), y(y), H(H), M(M), S(S) {}
         DateTime (int D, int m, int y) : D(D), m(m), y(y), H(0), M(0), S(0) {}
-        
+
         DateTime Now() const
         {
             return DateTime();
@@ -62,16 +66,7 @@ namespace Helper
             return GetTimeString() + " "+ GetTimeString(sep);
         }
     };
-     
-}
 
-template <class T>
-
-std::string ToString(const T &e)
-{
-    std::ostringstream s;
-    s << e;
-    return s.str();
 }
 
 void WriteAppLog(const std::string &s)
@@ -79,8 +74,7 @@ void WriteAppLog(const std::string &s)
     std::ofstream file;
 
     file.open ("AppLog.txt", std::ios::app);
-    file << "[" << Helper::DateTime().GetDateTimeString() << "]" 
-         << "\n" << s << std::endl << "\n";
+    file << "[" << Helper::DateTime().GetDateTimeString() << "]" << "\n" << s << std::endl << "\n";
     file.close();
 }
 

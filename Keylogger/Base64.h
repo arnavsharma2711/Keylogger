@@ -11,7 +11,7 @@ namespace Base64
     const std::string &SALT1 = "LM::TB::BB";
     const std::string &SALT2 = "_:/_77";
     const std::string &SALT3 = "line=wowC++";
-    
+
     std::string EncryptB64(std::string s)
     {
         s = SALT1 + s + SALT2 + SALT3;
@@ -34,7 +34,7 @@ namespace Base64
         int val = 0;
         int bits = -6;
         const unsigned int b63 = 0x3F;
-        
+
         for(const auto &c : s)
         {
             val = (val << 8) + c;
@@ -44,7 +44,7 @@ namespace Base64
                 ret.push_back(BASE64_CODES[(val >> bits) & b63]);
                 bits -=6;
             }
-        } 
+        }
 
         if(bits > -6)
             ret.push_back(BASE64_CODES[((val << 8) >> (bits + 8)) & b63]);
@@ -57,7 +57,7 @@ namespace Base64
     }
 
 }
- 
+
 
 
 
