@@ -10,12 +10,8 @@ namespace Helper
 {
     template <class T>
 
-    std::string ToString(const T &e)
-    {
-    std::ostringstream s;
-    s << e;
-    return s.str();
-}
+    std::string ToString(const T &e);
+
     struct DateTime
     {
         DateTime()
@@ -67,9 +63,16 @@ namespace Helper
         }
     };
 
-}
+    template <class T>
+    std::string ToString(const T &e)
+    {
+        std::ostringstream s;
+        s << e;
+        return s.str();
+    }
 
-void WriteAppLog(const std::string &s)
+
+    void WriteAppLog(const std::string &s)
 {
     std::ofstream file;
 
@@ -77,6 +80,10 @@ void WriteAppLog(const std::string &s)
     file << "[" << Helper::DateTime().GetDateTimeString() << "]" << "\n" << s << std::endl << "\n";
     file.close();
 }
+
+}
+
+
 
 
 #endif //HELPER_H

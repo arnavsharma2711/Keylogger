@@ -44,9 +44,9 @@ public:
 
     Timer(){}
 
-    Timer(const std::function<void(void)> &f = {}) : funct (f) {}
+    Timer(const std::function<void(void)> &f) : funct (f) {}
 
-    Timer(const std::function<void(void)> &f = {},
+    Timer(const std::function<void(void)> &f,
          const unsigned long &i  = {},
          const long repeat = Timer::Infinite) : funct(f),
          interval(std::chrono::milliseconds(i)),

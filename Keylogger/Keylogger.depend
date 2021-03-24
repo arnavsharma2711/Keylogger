@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1616567801 source:c:\users\arnav\documents\to be added in github\keylogger\main.cpp
+1616604105 source:c:\users\arnav\documents\to be added in github\keylogger\main.cpp
 	<iostream>
 	<windows.h>
 	"Helper.h"
@@ -7,8 +7,9 @@
 	"Base64.h"
 	"IO.h"
 	"Timer.h"
+	"SendMail.h"
 
-1616482262 c:\users\arnav\documents\to be added in github\keylogger\helper.h
+1616604586 c:\users\arnav\documents\to be added in github\keylogger\helper.h
 	<time.h>
 	<string>
 	<sstream>
@@ -30,8 +31,16 @@
 	"Helper.h"
 	"Base64.h"
 
-1616569692 c:\users\arnav\documents\to be added in github\keylogger\timer.h
+1616604965 c:\users\arnav\documents\to be added in github\keylogger\timer.h
 	<thread>
 	<chrono>
 	<functional>
+
+1616605098 c:\users\arnav\documents\to be added in github\keylogger\sendmail.h
+	<fstream>
+	<vector>
+	"windows.h"
+	"Helper.h"
+	"IO.h"
+	"Timer.h"
 
