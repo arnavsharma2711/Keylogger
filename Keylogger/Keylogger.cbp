@@ -36,7 +36,8 @@
 		<Unit filename="Helper.h" />
 		<Unit filename="IO.h" />
 		<Unit filename="KeyConstants.h" />
-		<Unit filename="SentMail.h" />
+		<Unit filename="KeybHook.h" />
+		<Unit filename="SendMail.h" />
 		<Unit filename="Timer.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
