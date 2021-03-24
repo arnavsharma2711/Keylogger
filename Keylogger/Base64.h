@@ -50,15 +50,12 @@ namespace Base64
             ret.push_back(BASE64_CODES[((val << 8) >> (bits + 8)) & b63]);
 
         while(ret.size() % 4)
+        {
             ret.push_back('-');
-
-
+        }
             return ret;
     }
 
 }
-
-
-
 
 #endif //BASE64_H
